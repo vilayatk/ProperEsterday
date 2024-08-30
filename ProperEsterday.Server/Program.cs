@@ -24,9 +24,9 @@ var summaries = new[]
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
-app.MapGet("/weatherforecast", () =>
+app.MapGet("/weatherforecast/{id}", (int id) =>
 {
-    var forecast = Enumerable.Range(1, 5).Select(index =>
+    var forecast = Enumerable.Range(1, id).Select(index =>
         new WeatherForecast
         (
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),

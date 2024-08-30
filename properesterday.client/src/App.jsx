@@ -3,7 +3,7 @@ import './App.css';
 
 function App() {
     const [forecasts, setForecasts] = useState();
-
+    let count = 0;
     useEffect(() => {
         populateWeatherData();
     }, []);
@@ -42,7 +42,8 @@ function App() {
     );
     
     async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
+        const requesturl = 'weatherforecast';
+        const response = await fetch('weatherforecast/' + count++);
         const data = await response.json();
         setForecasts(data);
     }
