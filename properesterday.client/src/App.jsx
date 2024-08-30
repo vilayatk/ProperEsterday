@@ -16,6 +16,7 @@ function App() {
                     <th>Date</th>
                     <th>Temp. (C)</th>
                     <th>Temp. (F)</th>
+                    <th>Temp. (K)</th>
                     <th>Summary</th>
                 </tr>
             </thead>
@@ -25,6 +26,7 @@ function App() {
                         <td>{forecast.date}</td>
                         <td>{forecast.temperatureC}</td>
                         <td>{forecast.temperatureF}</td>
+                        <td>{forecast.temperatureK}</td>
                         <td>{forecast.summary}</td>
                     </tr>
                 )}
