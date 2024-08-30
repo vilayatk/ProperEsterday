@@ -1,0 +1,6 @@
+@ProperEsterday.Server_HostAddress = http://localhost:5272
+
+GET {{ProperEsterday.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
