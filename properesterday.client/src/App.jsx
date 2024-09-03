@@ -5,11 +5,22 @@ function App() {
   const [forecasts, setForecasts] = useState();
   const [count, setCount] = useState(0);
   const [isStatic, setIsStatic] = useState(true);
+  // const [isEdit]
 
   const handleCheckboxChange = (event) => {
     setIsStatic(event.target.checked);
     populateWeatherData(count, event.target.checked);
   };
+
+  const handleDeleteRow = (date) => {
+    const updatedForecasts = forecasts.filter(
+      (forecasts) => forecasts.date !== date
+    );
+    console.log(forecasts.length);
+    console.log(updatedForecasts.length);
+    setForecasts(updatedForecasts);
+  };
+  const handleEditRow = (date) => {};
 
   const checkboxLabel = (value) => {
     return value ? "Static" : "Dynamic";
@@ -35,6 +46,7 @@ function App() {
             <th>Temp. (F)</th>
             <th>Temp. (K)</th>
             <th>Summary</th>
+            {isStatic && <th>Action</th>}
           </tr>
         </thead>
         <tbody>
@@ -45,6 +57,18 @@ function App() {
               <td>{forecast.temperatureF}</td>
               <td>{forecast.temperatureK}</td>
               <td>{forecast.summary}</td>
+              {isStatic && (
+                <td>
+                  <button
+                    className="edit btn"
+                    onClick={handleEditRow(forecast.date)}
+                  ></button>
+                  <button
+                    className="delete btn"
+                    onClick={() => handleDeleteRow(forecast.date)}
+                  ></button>
+                </td>
+              )}
             </tr>
           ))}
         </tbody>
